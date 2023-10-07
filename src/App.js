@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
+import React from "react";
+import DiaryEditor from "./component/DiaryEditor";
 
 function App() {
   return (
     <div className="App">
-      <p className="text-6xl">개발환경 셋업 완료</p>
+      <DiaryEditor />
     </div>
   );
 }
