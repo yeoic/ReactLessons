@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 function DiaryEditor(props) {
   const [state, setState] = useState({
@@ -14,8 +14,21 @@ function DiaryEditor(props) {
     });
   };
 
+  const authorInput = useRef();
+  const contentInput = useRef();
+
   const handleSubmit = (e) => {
-    console.log(state);
+    if (state.author.length < 1) {
+      alert("작성자는 최소 1 글자 이상 입력해주세요.");
+      authorInput.current.focus();
+      return;
+    }
+
+    if (state.content.length < 5) {
+      alert("일기 본문은 최소 5글자 이상 입력해주세요.");
+      contentInput.current.focus();
+      return;
+    }
     alert("저장 성공!");
   };
 
@@ -25,12 +38,14 @@ function DiaryEditor(props) {
         <p className="my-7 text-center text-4xl">오늘의 일기</p>
         <input
           name="author"
+          ref={authorInput}
           className="mb-5 h-10 border border-black"
           placeholder="작성자"
           onChange={handleChangeState}
         />
         <textarea
           name="content"
+          ref={contentInput}
           className="h-48 border border-black"
           placeholder="일기 내용"
           onChange={handleChangeState}
