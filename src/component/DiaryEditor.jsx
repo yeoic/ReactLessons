@@ -33,7 +33,7 @@ function DiaryEditor(props) {
   };
 
   return (
-    <div className="my-10 w-[600px] border-b border-gray-400 p-10">
+    <div className="mb-1 mt-10 w-[600px] border-b border-gray-400 p-10">
       <div className="container flex flex-col">
         <p className="my-7 text-center text-4xl">오늘의 일기</p>
         <input
