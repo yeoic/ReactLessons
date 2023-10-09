@@ -21,6 +21,13 @@ function App() {
     setData([newItem, ...data]);
   };
 
+  const onDelete = (targetId) => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      const newItem = data.filter((it) => it.id !== targetId);
+      setData(newItem);
+    }
+  };
+
   // const dummyList = [
   //   {
   //     id: 1,
@@ -48,7 +55,7 @@ function App() {
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} />
+      <DiaryList diaryList={data} onDelete={onDelete} />
     </div>
   );
 }

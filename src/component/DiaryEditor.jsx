@@ -44,6 +44,7 @@ function DiaryEditor({ onCreate }) {
         <p className="my-7 text-center text-4xl">오늘의 일기</p>
         <input
           name="author"
+          value={state.author}
           ref={authorInput}
           className="mb-5 h-10 border border-black"
           placeholder="작성자"
@@ -51,6 +52,7 @@ function DiaryEditor({ onCreate }) {
         />
         <textarea
           name="content"
+          value={state.content}
           ref={contentInput}
           className="h-48 border border-black"
           placeholder="일기 내용"
@@ -60,6 +62,7 @@ function DiaryEditor({ onCreate }) {
           <p className="">오늘의 감정 점수 : </p>
           <select
             name="emotion"
+            value={state.emotion}
             className="ml-2 w-60 border border-black"
             onChange={handleChangeState}
           >

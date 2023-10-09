@@ -1,6 +1,6 @@
 import React from "react";
 
-function DiaryItem({ author, content, created_date, emotion, id }) {
+function DiaryItem({ author, content, created_date, emotion, id, onDelete }) {
   return (
     <div className="my-4 bg-gray-200 p-5" key={id}>
       <div>
@@ -12,6 +12,14 @@ function DiaryItem({ author, content, created_date, emotion, id }) {
       </div>
       <div className="mt-5 border-t border-gray-400 pb-4 pt-7 font-semibold">
         {content}
+      </div>
+      <div className="flex justify-end">
+        <button
+          className="rounded bg-red-600 p-1.5 text-white"
+          onClick={() => onDelete(id)}
+        >
+          삭제하기
+        </button>
       </div>
     </div>
   );
