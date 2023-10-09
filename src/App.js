@@ -21,11 +21,17 @@ function App() {
     setData([newItem, ...data]);
   };
 
-  const onDelete = (targetId) => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
-      const newItem = data.filter((it) => it.id !== targetId);
-      setData(newItem);
-    }
+  const onRemove = (targetId) => {
+    const newItem = data.filter((it) => it.id !== targetId);
+    setData(newItem);
+  };
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((it) =>
+        it.id === targetId ? { ...it, content: newContent } : it,
+      ),
+    );
   };
 
   // const dummyList = [
@@ -55,7 +61,7 @@ function App() {
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} onDelete={onDelete} />
+      <DiaryList onEdit={onEdit} diaryList={data} onRemove={onRemove} />
     </div>
   );
 }
