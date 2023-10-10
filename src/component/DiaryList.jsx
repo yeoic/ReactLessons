@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import DiaryItem from "./DiaryItem";
+import { DiaryStateContext } from "../App";
 
-function DiaryList({ diaryList, onRemove, onEdit }) {
-  useEffect(() => {
-    console.log("다이어리 리스트 렌더링!");
-  }, [diaryList]);
+function DiaryList() {
+  const diaryList = useContext(DiaryStateContext);
 
   return (
     <div className="w-[600px] border-b border-gray-400 p-10">
@@ -12,7 +11,7 @@ function DiaryList({ diaryList, onRemove, onEdit }) {
       <p>{diaryList.length} 개의 일기가 있습니다.</p>
       <div>
         {diaryList.map((it) => (
-          <DiaryItem onEdit={onEdit} onRemove={onRemove} key={it.id} {...it} />
+          <DiaryItem key={it.id} {...it} />
         ))}
       </div>
     </div>
