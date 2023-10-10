@@ -1,6 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function DiaryEditor({ onCreate }) {
+  useEffect(() => {
+    console.log("DiaryEditer 렌더");
+  }, []);
+
   const [state, setState] = useState({
     author: "",
     content: "",
@@ -84,4 +88,4 @@ function DiaryEditor({ onCreate }) {
   );
 }
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);

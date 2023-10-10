@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function DiaryItem({
   author,
@@ -9,6 +9,10 @@ function DiaryItem({
   onRemove,
   onEdit,
 }) {
+  useEffect(() => {
+    console.log(`${id}번쨰 아이템 렌더!`);
+  }, []);
+
   const handleRemove = () => {
     if (window.confirm(`${id}번째 일기를 정말 삭제하시겠습니까?`)) {
       onRemove(id);
@@ -98,4 +102,4 @@ function DiaryItem({
   );
 }
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
